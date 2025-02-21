@@ -1,21 +1,13 @@
-import { getCurrentUrl } from "@/lib/utils";
 import { InfoIcon } from "lucide-react";
 import React from "react";
 
-export async function generateMetadata({ searchParams }, parent) {
+export async function generateMetadata({ searchParams }) {
   const { query } = await searchParams;
 
-  if (parent.found) {
-    return {
-      title: `En-My Dictionary | ${query}`,
-      description: `Definitions for ${query}`,
-    };
-  } else {
-    return {
-      title: `Word not found for '${query}'`,
-      description: `Word not found for ${query}`,
-    };
-  }
+  return {
+    title: `En-My Dictionary | ${query}`,
+    description: `Definitions for ${query}`,
+  };
 }
 
 const Word = async ({ searchParams }) => {
@@ -27,10 +19,9 @@ const Word = async ({ searchParams }) => {
 
   const results = await response.json();
 
-  console.log(results);
+  // console.log(results);
 
-  if (results) {
-    generateMetadata({ searchParams }, { found: true });
+  if (results?.word) {
     return (
       <div className="m-2 space-y-4">
         <div>
@@ -45,7 +36,6 @@ const Word = async ({ searchParams }) => {
       </div>
     );
   } else {
-    generateMetadata({ searchParams }, { found: false });
     return (
       <div className="h-[200px] flex items-center justify-center">
         <div className="flex flex-col items-center gap-1">

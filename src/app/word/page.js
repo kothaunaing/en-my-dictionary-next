@@ -21,30 +21,27 @@ export async function generateMetadata({ searchParams }, parent) {
 const Word = async ({ searchParams }) => {
   const { query } = await searchParams;
 
-  const fullUrl = await getCurrentUrl();
-  const response = await fetch(`${fullUrl}/api/word?query=${query}`);
+  const response = await fetch(
+    `https://enmydictionaryapi.onrender.com/word/${query}`
+  );
 
   const results = await response.json();
 
-  // console.log(results);
+  console.log(results);
 
-  if (results?.length) {
+  if (results) {
     generateMetadata({ searchParams }, { found: true });
     return (
       <div className="m-2 space-y-4">
-        {results.map((word) => {
-          return (
-            <div key={word._id}>
-              <div>
-                <h1 className="font-bold text-3xl">{word.word}</h1>
-              </div>
-              <div
-                className="break-words whitespace-pre-wrap leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: word.definition }}
-              />
-            </div>
-          );
-        })}
+        <div>
+          <div>
+            <h1 className="font-bold text-3xl">{results.word}</h1>
+          </div>
+          <div
+            className="break-words whitespace-pre-wrap leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: results.definition }}
+          />
+        </div>
       </div>
     );
   } else {

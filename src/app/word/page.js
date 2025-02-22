@@ -22,7 +22,7 @@ const Word = async ({ searchParams }) => {
 
     // console.log(data);
 
-    if (data.results?.length > 0) {
+    if (data?.results?.length > 0) {
       if (data.type === "en-mm") {
         return (
           <div className="m-2 space-y-4">

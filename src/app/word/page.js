@@ -22,18 +22,22 @@ const Word = async ({ searchParams }) => {
 
     // console.log(results);
 
-    if (results?.word) {
+    if (results?.length > 0) {
       return (
         <div className="m-2 space-y-4">
-          <div>
-            <div>
-              <h1 className="font-bold text-3xl">{results.word}</h1>
-            </div>
-            <div
-              className="break-words whitespace-pre-wrap leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: results.definition }}
-            />
-          </div>
+          {results.map((word) => {
+            return (
+              <div key={word._id}>
+                <div>
+                  <h1 className="font-bold text-3xl">{word.word}</h1>
+                </div>
+                <div
+                  className="break-words whitespace-pre-wrap leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: word.definition }}
+                />
+              </div>
+            );
+          })}
         </div>
       );
     } else {

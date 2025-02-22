@@ -6,8 +6,8 @@ export async function generateMetadata({ searchParams }) {
   const { query } = await searchParams;
 
   return {
-    title: `En-My Dictionary | ${query}`,
-    description: `Definitions for ${query}`,
+    title: `En-My Dictionary | ${query.trim()}`,
+    description: `Definitions for ${query.trim()}`,
   };
 }
 
@@ -16,7 +16,7 @@ const Word = async ({ searchParams }) => {
 
   try {
     const response = await fetch(
-      `https://enmydictionaryapi.onrender.com/api/word/${query}`
+      `https://enmydictionaryapi.onrender.com/api/word/${query.trim()}`
     );
 
     const data = await response.json();

@@ -2,15 +2,12 @@
 
 import { SearchIcon } from "lucide-react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import Recommendations from "./Recommendations";
 
 const Header = () => {
-  const searchParams = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState(
-    searchParams.get("query") || ""
-  );
+  const [searchQuery, setSearchQuery] = useState("");
   const [openRecommends, setOpenRecommends] = useState(false);
 
   const router = useRouter();

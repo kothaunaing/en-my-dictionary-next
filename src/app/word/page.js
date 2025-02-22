@@ -15,7 +15,7 @@ const Word = async ({ searchParams }) => {
 
   try {
     const response = await fetch(
-      `https://enmydictionaryapi.onrender.com/word/${query}`
+      `https://enmydictionaryapi.onrender.com/api/word/${query}`
     );
 
     const results = await response.json();

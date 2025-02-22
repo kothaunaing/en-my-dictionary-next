@@ -2,12 +2,15 @@
 
 import { SearchIcon } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import Recommendations from "./Recommendations";
 
 const Header = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const searchParams = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(
+    searchParams.get("query") || ""
+  );
   const [openRecommends, setOpenRecommends] = useState(false);
 
   const router = useRouter();
@@ -34,12 +37,13 @@ const Header = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search..."
-            className="bg-transparent outline-none border-none p-1 h-full w-full"
+            className="bg-transparent outline-none border-none p-2 h-full w-full"
           />
           <Recommendations
             query={searchQuery}
             open={openRecommends}
             setOpen={setOpenRecommends}
+            setQuery={setSearchQuery}
           />
         </div>
       </form>

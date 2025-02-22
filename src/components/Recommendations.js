@@ -4,7 +4,7 @@ import { debounce } from "lodash";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
-const Recommendations = ({ query, open, setOpen }) => {
+const Recommendations = ({ query, open, setOpen, setQuery }) => {
   const [words, setWords] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -52,7 +52,7 @@ const Recommendations = ({ query, open, setOpen }) => {
         }
 
         const data = await response.json();
-        setWords(data);
+        setWords(data.results);
       } catch (error) {
         setError(error.message);
         setWords([]);
@@ -70,9 +70,12 @@ const Recommendations = ({ query, open, setOpen }) => {
           <ul className="space-y-1">
             {words.map((word) => {
               return (
-                <li key={word._id}>
+                <li key={word?._id || word?.id}>
                   <Link
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                      setOpen(false);
+                      setQuery(word.word);
+                    }}
                     href={`/word?query=${word.word}`}
                     className="hover:opacity-80"
                   >

@@ -27,7 +27,7 @@ const Header = () => {
         </Link>
       </div>
       <form onSubmit={searchWord}>
-        <div className="flex gap-2 border-b p-1 relative">
+        <div className="flex items-center gap-2 border-b p-1 relative">
           <SearchIcon />
           <input
             onFocus={() => setOpenRecommends(true)}

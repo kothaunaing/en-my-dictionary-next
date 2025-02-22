@@ -43,7 +43,7 @@ const Recommendations = ({ query, open, setOpen, setQuery }) => {
 
       try {
         const response = await fetch(
-          `https://enmydictionaryapi.onrender.com/api/word-recommend/${debouncedQuery.trim()}?limit=20`
+          `https://enmydictionaryapi.onrender.com/api/word-recommend/${debouncedQuery.trim()}?limit=40`
         );
 
         if (!response.ok) {

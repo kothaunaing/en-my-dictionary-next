@@ -21,7 +21,7 @@ const Word = async ({ searchParams }) => {
 
     const data = await response.json();
 
-    console.log(data);
+    // console.log(data);
 
     if (data.results?.length > 0) {
       if (data.type === "en-mm") {

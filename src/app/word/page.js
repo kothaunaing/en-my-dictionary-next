@@ -1,3 +1,4 @@
+import { apiUrl } from "@/lib/utils";
 import { InfoIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -15,9 +16,7 @@ const Word = async ({ searchParams }) => {
   const { query } = await searchParams;
 
   try {
-    const response = await fetch(
-      `https://enmydictionaryapi.onrender.com/api/word/${query.trim()}`
-    );
+    const response = await fetch(`${apiUrl}/api/word/en-mm/${query.trim()}`);
 
     const data = await response.json();
 

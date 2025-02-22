@@ -1,10 +1,3 @@
-import { headers } from "next/headers";
-
-export async function getCurrentUrl() {
-  const headersList = await headers();
-  const host = headersList.get("host"); // Gets the domain
-  const protocol = headersList.get("x-forwarded-proto") || "http"; // Detects HTTPS or HTTP
-  const fullUrl = `${protocol}://${host}`;
-
-  return fullUrl;
-}
+export const apiUrl = process.env.NEXT_PUBLIC_IS_DEV
+  ? "http://localhost:3000"
+  : "https://enmydictionaryapi.onrender.com";

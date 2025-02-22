@@ -1,5 +1,6 @@
 "use client";
 
+import { apiUrl } from "@/lib/utils";
 import { debounce } from "lodash";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
@@ -43,7 +44,7 @@ const Recommendations = ({ query, open, setOpen, setQuery }) => {
 
       try {
         const response = await fetch(
-          `https://enmydictionaryapi.onrender.com/api/word-recommend/${debouncedQuery.trim()}?limit=40`
+          `${apiUrl}/api/recommendations/en-mm/${debouncedQuery.trim()}?limit=40`
         );
 
         if (!response.ok) {

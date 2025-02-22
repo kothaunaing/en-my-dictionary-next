@@ -1,6 +1,6 @@
 {
-  "name": "en-my-dictionary-next2",
-  "version": "0.1.0",
+  "name": "mylexicon",
+  "version": "0.4.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",

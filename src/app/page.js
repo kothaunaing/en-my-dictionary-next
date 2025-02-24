@@ -14,13 +14,13 @@ export default async function Home() {
             <Link className="" href={"/en-mm"}>
               <div className="flex justify-center gap-1">
                 <Image
-                  src={"/en-mm.png"}
+                  src={"en-mm.png"}
                   width={100}
                   height={100}
                   alt="English-Myanmar dictionary icon"
                 />
                 <Image
-                  src={"/mm-en.png"}
+                  src={"mm-en.png"}
                   width={100}
                   height={100}
                   alt="English-Myanmar dictionary icon"
@@ -34,10 +34,10 @@ export default async function Home() {
             </Link>
           </div>
           <div className="border p-3">
-            <Link className="" href={"/en-mm"}>
+            <Link className="" href={"/mm-mm"}>
               <div className="flex justify-center gap-1">
                 <Image
-                  src={"/mm-mm.png"}
+                  src={"mm-mm.png"}
                   width={100}
                   height={100}
                   alt="English-Myanmar dictionary icon"

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import Recommendations from "./Recommendations";
 
-const Header = () => {
+const Header = ({ title, dictType }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [openRecommends, setOpenRecommends] = useState(false);
 
@@ -16,14 +16,14 @@ const Header = () => {
     e.preventDefault();
     if (!searchQuery.trim()) return;
 
-    router.push(`/word?query=${searchQuery}`);
+    router.push(`/${dictType}/word?query=${searchQuery}`);
   };
 
   return (
-    <header className="p-3 border-b border-b-slate-700 bg-black sticky inset-x-0 top-0 z-10 flex items-center justify-between">
+    <header className="p-3 pt-0 border-b border-b-slate-700 bg-black sticky inset-x-0 top-0 z-10 flex items-center justify-between">
       <div className="">
-        <Link href={`/`}>
-          <h1 className="font-bold text-xl">En-My Dictionary</h1>
+        <Link href={`/${dictType}`}>
+          <h1 className="font-bold text-xl">{title}</h1>
         </Link>
       </div>
       <form onSubmit={searchWord}>
@@ -37,6 +37,7 @@ const Header = () => {
             className="bg-transparent outline-none border-none p-2 h-full w-full"
           />
           <Recommendations
+            dictType={dictType}
             query={searchQuery}
             open={openRecommends}
             setOpen={setOpenRecommends}

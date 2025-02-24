@@ -5,7 +5,13 @@ import { debounce } from "lodash";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 
-const Recommendations = ({ query, open, setOpen, setQuery }) => {
+const Recommendations = ({
+  dictType = "en-mm",
+  query,
+  open,
+  setOpen,
+  setQuery,
+}) => {
   const [words, setWords] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -44,7 +50,7 @@ const Recommendations = ({ query, open, setOpen, setQuery }) => {
 
       try {
         const response = await fetch(
-          `${apiUrl}/api/recommendations/en-mm/${debouncedQuery.trim()}?limit=40`
+          `${apiUrl}/api/dictionary/recommendations/${dictType}/${debouncedQuery.trim()}?limit=50`
         );
 
         if (!response.ok) {
@@ -77,10 +83,13 @@ const Recommendations = ({ query, open, setOpen, setQuery }) => {
                       setOpen(false);
                       setQuery(word.word);
                     }}
-                    href={`/word?query=${word.word}`}
-                    className="hover:opacity-80"
+                    href={`/${dictType}/word?query=${word.word}`}
+                    className="hover:opacity-80 "
                   >
                     {word.word}
+                    {word?.part_of_speech && (
+                      <span className="ml-1">({word.part_of_speech})</span>
+                    )}
                   </Link>
                 </li>
               );

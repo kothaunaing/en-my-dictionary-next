@@ -16,14 +16,14 @@ export default async function Home() {
           <div className="border p-3 hover:opacity-75">
             <Link className="" href={"/en-mm"}>
               <div className="flex justify-center gap-1">
-                <Image
-                  src={"/en-mm.png"}
+                <img
+                  src={"/images/en-mm.png"}
                   width={100}
                   height={100}
                   alt="English-Myanmar dictionary icon"
                 />
-                <Image
-                  src={"/mm-en.png"}
+                <img
+                  src={"/images/mm-en.png"}
                   width={100}
                   height={100}
                   alt="
@@ -40,8 +40,8 @@ export default async function Home() {
           <div className="border p-3 hover:opacity-75">
             <Link className="" href={"/mm-mm"}>
               <div className="flex justify-center gap-1">
-                <Image
-                  src={"/mm-mm.png"}
+                <img
+                  src={"/images/mm-mm.png"}
                   width={100}
                   height={100}
                   alt="Myanmar dictionary icon"
@@ -55,8 +55,8 @@ export default async function Home() {
           <div className="border p-3 hover:opacity-75">
             <Link className="" href={"/mm-spelling"}>
               <div className="flex justify-center gap-1">
-                <Image
-                  src={"/mm-spelling.jpeg"}
+                <img
+                  src={"/images/mm-spelling.jpeg"}
                   width={100}
                   height={100}
                   alt="Myanmar spelling icon"

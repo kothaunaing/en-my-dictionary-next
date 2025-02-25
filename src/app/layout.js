@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "En-My Dictionary",
-  description: "En-My Dictionary",
+  title: "MyLexicon",
+  description: "Collection of Myanmar resources",
 };
 
 export default function RootLayout({ children }) {
